@@ -14,10 +14,12 @@ class App extends React.Component {
   }
 
   filterUpdate(value) {
+  	this.setState({filterText: value});
     //Here you will need to set the filterText property of state to the value passed into this function
   }
 
   selectedUpdate(id) {
+  	this.setState({selectedBuilding: id});
     //Here you will need to update the selectedBuilding property of state to the id passed into this function
   }
 
