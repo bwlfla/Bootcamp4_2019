@@ -14,12 +14,13 @@ class App extends React.Component {
   }
 
   filterUpdate(value) {
-  	this.setState({filterText: value});
+  	this.setState({filterText: value})
+  	console.log("Parent function called with value: ",value)
     //Here you will need to set the filterText property of state to the value passed into this function
   }
 
   selectedUpdate(id) {
-  	this.setState({selectedBuilding: id});
+  	this.setState({selectedBuilding: id})
     //Here you will need to update the selectedBuilding property of state to the id passed into this function
   }
 
@@ -31,7 +32,9 @@ class App extends React.Component {
           <h1>UF Directory App</h1>
         </div>
 
-        <Search/>
+        <Search
+        	filterUpdate={this.filterUpdate.bind(this)}
+        />
         <main>
           <div className="row">
             <div className="column1">
