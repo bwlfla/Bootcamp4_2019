@@ -15,7 +15,7 @@ class App extends React.Component {
 
   filterUpdate(value) {
   	this.setState({filterText: value})
-  	console.log("Parent function called with value: ",value)
+  	//console.log("Parent function called with value: ",value)
     //Here you will need to set the filterText property of state to the value passed into this function
   }
 
@@ -47,6 +47,7 @@ class App extends React.Component {
                   </tr>
                   <BuildingList
                     data={this.props.data}
+                    filterText={this.state.filterText}
                   />
                 </table>
               </div>
