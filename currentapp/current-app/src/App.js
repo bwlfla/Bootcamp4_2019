@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 0
+      selectedBuilding: 0,
+      listOfBuildings: this.props.data
     };
   }
 
@@ -22,6 +23,25 @@ class App extends React.Component {
   selectedUpdate(id) {
   	this.setState({selectedBuilding: id})
     //Here you will need to update the selectedBuilding property of state to the id passed into this function
+  }
+
+  addBuilding(code, name, longitude, latitude, address){
+  	let end=this.state.listOfBuildings[this.state.Buildings.length-1].id
+  	let newData=this.state.listOfBuildings;
+
+  	newData.push({
+  		id:end+1,
+  		code: code,
+  		name: name,
+  		coordinates: {
+  			longitude: longitude,
+  			latitude: latitude
+  		},
+  		address: address
+  	})
+  	this.setState({
+  		listOfBuildings: newData
+  	})
   }
 
   render() {
@@ -46,7 +66,7 @@ class App extends React.Component {
                     </td>
                   </tr>
                   <BuildingList
-                    data={this.props.data}
+                    data={this.state.listOfBuildings}
                     filterText={this.state.filterText}
                     selectedUpdate={this.selectedUpdate.bind(this)}
                   />
@@ -55,7 +75,7 @@ class App extends React.Component {
             </div>
             <div className="column2">
               <ViewBuilding
-              	data={this.props.data}
+              	data={this.state.listOfBuildings}
               	selectedBuilding={this.state.selectedBuilding} 
               />
             </div>
